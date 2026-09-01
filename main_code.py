@@ -538,6 +538,9 @@ while True:
                 print("This id doesn't exists")
             else:
                 scl.selected_classroom.course=scl.courses[scl.courses.index(course_id)]
+                if scl.selected_classroom.teacher is not None:
+                    if course_id not in scl.selected_classroom.teacher.courses:
+                        scl.selected_classroom.teacher = None
         elif cmd==5:
             for t in scl.teachers:    
                 if t.id!=scl.selected_classroom.teacher.id:
