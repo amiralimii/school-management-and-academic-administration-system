@@ -87,7 +87,7 @@ class Classroom:
     def print_info(self):
         print("Id:",self.id)
         print("Name:",self.name)
-        print("Courses:",self.id)
+        print("Courses:",self.course.id)
         print("Teachers:",self.teacher)
         print("Students:")
         print("Id\tName\tFamily") 
@@ -531,7 +531,13 @@ while True:
         elif cmd==3:
             pass
         elif cmd==4:
-            pass
+            for c in scl.courses:    
+                print(c)
+            course_id=int(input("course_id:"))
+            if course_id not in scl.courses: 
+                print("This id doesn't exists")
+            else:
+                scl.selected_classroom.course=scl.courses[scl.courses.index(course_id)]
         elif cmd==5:
             for t in scl.teachers:    
                 if t.id!=scl.selected_classroom.teacher.id:
