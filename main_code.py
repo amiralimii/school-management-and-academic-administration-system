@@ -533,7 +533,11 @@ while True:
         elif cmd==4:
             pass
         elif cmd==5:
-            pass
+            for t in scl.teachers:    
+                if t.id!=scl.selected_classroom.teacher.id:
+                    print(t) 
+            teacher_id=int(input("id:"))
+            scl.selected_classroom.teacher=scl.teachers[scl.teachers.index(Teacher(teacher_id,"",""))]
         elif cmd==6:
             pass
         elif cmd==0:
