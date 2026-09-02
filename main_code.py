@@ -226,24 +226,17 @@ class School:
                     y=self.courses[self.courses.index(course_id)]
                     t.courses.append(y)
             self.teachers.append(t)
-        for item in reads["students"]:
-            t = Student(item["id"],item["name"],item["family"])
-            for course_id in item["courses"]:
-                if course_id[0] in self.courses:
-                    y=self.courses[self.courses.index(course_id[0])]
-                    y.score=course_id[1]
-                    k=copy.deepcopy(y)
-                    t.courses.append(k)
-            self.students.append(t)
         for item in reads["classrooms"]:
             t = Classroom(item["id"],item["name"])
             if item["course"] in self.courses:
-                t.course=self.courses[self.courses.index(item["course"])]
-            if item["teacher"] in self.teachers:
-                t.teacher=self.teachers[self.teachers.index(item["teacher"])]
+                t.course = self.courses[self.courses.index(item["course"])]
+            if item["teacher"] is None:
+                t.teacher = None
+            elif item["teacher"] in self.teachers:
+                t.teacher = self.teachers[self.teachers.index(item["teacher"])]
             for student in item["students"]:
                 t.students.append(self.students[self.students.index(student)])
-            self.classrooms.append(t)                              
+            self.classrooms.append(t)                             
     def save_data(self):
         result = {}
         result["students"] = []
@@ -275,7 +268,7 @@ class School:
                 "id" :c.id,
                 "name" : c.name,
                 "course" : c.course.id,
-                "teacher" : c.teacher.id,
+                "teacher" : None if c.teacher is None else c.teacher.id,
                 "students" : [s.id for s in c.students]
             })
         with open("data.json", "w") as f:
@@ -522,14 +515,36 @@ while True:
         if cmd==1:
             scl.selected_classroom.print_info()
         elif cmd==2:
+            failed_students=[]
             for s in scl.students:
                 for c in s.courses:
-                    if c.score< 10:
-                        print(s.id,s.name)
+                    if s not in scl.selected_classroom.students:
+                        if c.score < 10:
+                            if s not in failed_students:
+                                failed_students.append(s)
+                                break
+                if len(scl.selected_classroom.students)==3:
+                    print("Theren Is No Student")
+                    break
+            for s in failed_students:
+                print(s)
             student_id=int(input("id:"))
-            scl.add_classroom(id,"-","-","-",student_id)
+            if student_id not in scl.students:
+                print("This student doesn't exist")
+            else:
+                student=scl.students[scl.students.index(Student(student_id,"",""))]
+                if student in scl.selected_classroom.students:
+                    print("This student already exists")
+                else:
+                    scl.selected_classroom.students.append(student)
         elif cmd==3:
-            pass
+            for s in scl.selected_classroom.students:
+                print(s)
+            student_id=int(input("id:"))
+            if student_id not in scl.selected_classroom.students:
+                print("This student doesn't exist in this classroom")
+            else:
+                scl.selected_classroom.students.remove(Student(student_id,"",""))
         elif cmd==4:
             for c in scl.courses:    
                 print(c)
@@ -551,3 +566,4 @@ while True:
             pass
         elif cmd==0:
             level="classrooms"
+            
