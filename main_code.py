@@ -145,6 +145,22 @@ class School:
             print("This id is exsits")
         else:
             self.courses.append(Course(id,name,units,score))
+    def add_course_to_selected_student(self,id):
+        if id  not in self.courses:
+            print("This id doesn't exist")
+        else:
+            if id in self.selected_student.courses:
+                print("This id already exist")
+            else:
+                scl.selected_student.courses.append(self.courses[self.courses.index(id)])
+    def add_course_to_selected_teacher(self,id):
+        if id  not in self.courses:
+            print("This id doesn't exist")
+        else:
+            if id in self.selected_teachers.courses:
+                print("This id already exist")
+            else:
+                self.selected_teachers.courses.append(self.courses[self.courses.index(id)])
     def remove_student(self,id):
         if id not in scl.students:
             print("This id doesn't exsits")
@@ -160,6 +176,16 @@ class School:
             print("This id doesn't exsits")
         else:
             self.courses.remove(Course(id,"",0,0))
+    def remove_course_to_selected_student(self,id):
+        if id not in self.courses:
+            print("This id doesn't exists")
+        else:
+            self.selected_student.courses.remove(self.courses[self.courses.index(id)])
+    def remove_course_to_selected_teacher(self,id):
+        if id not in self.courses:
+            print("This id doesn't exists")
+        else:
+            self.selected_teachers.courses.remove(self.courses[self.courses.index(id)])
     def edit_student(self,id,name,family):
         if id  not in scl.students:
             print("This id doesn't exists")
@@ -203,6 +229,20 @@ class School:
             print("Id\tname")
             for c in scl.classrooms:
                 print(c)
+    def select_student(self,id):
+        if id not in self.students:
+            print("Error")
+        else:
+            self.selected_student=self.students[self.students.index(Student(id,"",""))]
+    def select_teacher(self,id):
+            if id not in self.teachers:
+                print("Error")
+            else:
+                self.selected_teachers=self.teachers[self.teachers.index(Teacher(id,"",""))]
+    def select_classroom(self,id):
+        if id  not in scl.classrooms:
+            print("This id doesn't exists") 
+        scl.selected_classroom=scl.classrooms[scl.classrooms.index(Classroom(id,""))]
     def load_data(self):
         f1=open("data.json","rt")
         s=f1.read( )
@@ -323,11 +363,8 @@ while True:
         elif cmd==5:
             scl.print_student( )
             id=int(input("id:"))
-            if id not in scl.students:
-                print("Error")
-            else:
-                scl.selected_student=scl.students[scl.students.index(Student(id,"",""))]
-                level="select students"
+            scl.select_student(id)
+            level="select students"
         elif cmd==0:
             level="root"
     elif level=="select students":
@@ -342,22 +379,13 @@ while True:
         elif cmd==2:
             for c in scl.courses:
                 print(c)
-            t=int(input("id:"))
-            if t  not in scl.courses:
-                print("This id doesn't exist")
-            else:
-                if t in scl.selected_student.courses:
-                    print("This id already exist")
-                else:
-                    scl.selected_student.courses.append(scl.courses[scl.courses.index(t)])
+            id=int(input("id:"))
+            scl.add_course_to_selected_student(id)
         elif cmd==3:
             for c in scl.selected_student.courses:
                 print(c)
-            t=int(input("id:"))
-            if t not in scl.courses:
-                print("This id doesn't exists")
-            else:
-                scl.selected_student.courses.remove(scl.courses[scl.courses.index(t)])
+            id=int(input("id:"))
+            scl.remove_course_to_selected_student(id)
         elif cmd==4:
             for course  in scl.selected_student.courses:
                 score=int(input(f"{course.name}:"))
@@ -390,11 +418,8 @@ while True:
         elif cmd==5:
             scl.print_teacher( )
             id=int(input("id:"))
-            if id not in scl.teachers:
-                print("This id doesn't exists")
-            else:
-                scl.selected_teachers=scl.teachers[scl.teachers.index(Teacher(id,"",""))]
-                level="select teachers"
+            scl.select_teacher(id)
+            level="select teachers"
         elif cmd==0:
             level="root"
     elif level=="select teachers":
@@ -408,22 +433,13 @@ while True:
         elif cmd==2:
             for c in scl.courses:
                 print(c)
-            t=int(input("Id:"))
-            if t  not in scl.courses:
-                print("This id doesn't exist")
-            else:
-                if t in scl.selected_teachers.courses:
-                    print("This id already exist")
-                else:
-                    scl.selected_teachers.courses.append(scl.courses[scl.courses.index(t)])
+            id=int(input("Id:"))
+            scl.add_course_to_selected_teacher(id)
         elif cmd==3:
             for c in scl.selected_teachers.courses:
                 print(c)
-            t=int(input("Id:"))
-            if t not in scl.courses:
-                print("This id doesn't exists")
-            else:
-                scl.selected_teachers.courses.remove(scl.courses[scl.courses.index(t)])
+            id=int(input("Id:"))
+            scl.remove_course_to_selected_teacher(id)
         elif cmd==0:
             level="teachers"
     elif level=="courses":
@@ -497,9 +513,7 @@ while True:
         elif cmd==5:
             scl.print_classrooms( )
             id=int(input("id:"))
-            if id  not in scl.classrooms:
-                print("This id doesn't exists") 
-            scl.selected_classroom=scl.classrooms[scl.classrooms.index(Classroom(id,""))]
+            scl.select_classroom(id)
             level="select classrooms"
         elif cmd==0:
             level="root"
