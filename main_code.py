@@ -1,115 +1,248 @@
 import copy
 import json
 class Course:
-    id:int=0
-    name:str=""
-    units:int=0
-    score:int=0
-    def __init__(self,id,name,units,score):
-        self.id=id
-        self.name=name
-        self.units=units
-        self.score=score
-    def __eq__(self,other):
-        if isinstance(other,Course):
-            return self.id==other.id
-        elif isinstance(other,int):
-            return self.id==other
+    """
+    Represents a course with its ID, name, units, and score.
+    """
+    id: int = 0
+    name: str = ""
+    units: int = 0
+    score: int = 0
+    def __init__(self, id, name, units, score):
+        """
+        Initialize a Course object.
+
+        Args:
+            id (int): The unique ID of the course.
+            name (str): The name of the course.
+            units (int): The number of course units.
+            score (int): The student's score in the course.
+        """
+        self.id = id
+        self.name = name
+        self.units = units
+        self.score = score
+    def __eq__(self, other):
+        """
+        Compare the course with another Course object or an integer ID.
+
+        Args:
+            other (Course or int): The object or course ID to compare with.
+
+        Returns:
+            bool: True if the course IDs are equal, otherwise False.
+        """
+        if isinstance(other, Course):
+            return self.id == other.id
+        elif isinstance(other, int):
+            return self.id == other
     def __str__(self):
-        return f"{self.id}\t{self.name}\t{self.units}\t{self.score} " 
+        """
+        Return a formatted string containing the course information.
+
+        Returns:
+            str: The course ID, name, units, and score.
+        """
+        return f"{self.id}\t{self.name}\t{self.units}\t{self.score} "
 class Student:
-    id:int=0
-    name:str=""
-    family:str=""
-    courses:list[Course]=[]
-    def __init__(self,id,name,family):
-        self.id=id
-        self.name=name
-        self.family=family
-        self.courses=[]
-    def __eq__(self,other):
-        if isinstance(other,Student):
-            return self.id==other.id
-        elif isinstance(other,int):
-            return self.id==other
+    """
+    Represents a student with an ID, name, family name, and courses.
+    """
+    id: int = 0
+    name: str = ""
+    family: str = ""
+    courses: list[Course] = []
+    def __init__(self, id, name, family):
+        """
+        Initialize a Student object.
+
+        Args:
+            id (int): The unique ID of the student.
+            name (str): The first name of the student.
+            family (str): The family name of the student.
+        """
+        self.id = id
+        self.name = name
+        self.family = family
+        self.courses = []
+    def __eq__(self, other):
+        """
+        Compare the student with another Student object or an integer ID.
+
+        Args:
+            other (Student or int): The object or student ID to compare with.
+
+        Returns:
+            bool: True if the student IDs are equal, otherwise False.
+        """
+        if isinstance(other, Student):
+            return self.id == other.id
+        elif isinstance(other, int):
+            return self.id == other
     def __str__(self):
+        """
+        Return a formatted string containing the student's information.
+
+        Returns:
+            str: The student's ID, name, and family name.
+        """
         return f"{self.id}\t{self.name}\t{self.family}"
     def print_info(self):
-        print("Id:",self.id)
-        print("Name:",self.name)
-        print("Family:",self.family)
+        """
+        Print the student's information and enrolled courses.
+        """
+        print("Id:", self.id)
+        print("Name:", self.name)
+        print("Family:", self.family)
         print("Courses:")
-        print("Id\tName\tUnit\tScore") 
+        print("Id\tName\tUnit\tScore")
         for s in self.courses:
             print(s)
 class Teacher:
-    id:int=0
-    name:str=""
-    family:str=""
-    courses:list[Course]=[]
-    def __init__(self,id,name,family):
-        self.id=id
-        self.name=name
-        self.family=family
-        self.courses=[]
-    def __eq__(self,other):
-        if isinstance(other,Teacher):
-            return self.id==other.id
-        elif isinstance(other,int):
-            return self.id==other
+    """
+    Represents a teacher with an ID, name, family name, and courses.
+    """
+    id: int = 0
+    name: str = ""
+    family: str = ""
+    courses: list[Course] = []
+    def __init__(self, id, name, family):
+        """
+        Initialize a Teacher object.
+
+        Args:
+            id (int): The unique ID of the teacher.
+            name (str): The first name of the teacher.
+            family (str): The family name of the teacher.
+        """
+        self.id = id
+        self.name = name
+        self.family = family
+        self.courses = []
+    def __eq__(self, other):
+        """
+        Compare the teacher with another Teacher object or an integer ID.
+
+        Args:
+            other (Teacher or int): The object or teacher ID to compare with.
+
+        Returns:
+            bool: True if the teacher IDs are equal, otherwise False.
+        """
+        if isinstance(other, Teacher):
+            return self.id == other.id
+        elif isinstance(other, int):
+            return self.id == other
     def __str__(self):
+        """
+        Return a formatted string containing the teacher's information.
+
+        Returns:
+            str: The teacher's ID, name, and family name.
+        """
         return f"{self.id}\t{self.name}\t{self.family}"
     def print_info(self):
-        print("Id:",self.id)
-        print("Name:",self.name)
-        print("Family:",self.family)
+        """
+        Print the teacher's information and assigned courses.
+        """
+        print("Id:", self.id)
+        print("Name:", self.name)
+        print("Family:", self.family)
         print("Courses:")
         print("Id\tName\tUnit\tScore") 
         for s in self.courses:
             print(s)
 class Classroom:
-    id:int=0
-    name:str=""
-    course:Course=None
-    teacher:Teacher=None
-    students:list[Student]=[]
-    def __init__(self,id,name):
-        self.id=id
-        self.name=name
-        self.students=[]
-    def __eq__(self,other):
-        if isinstance(other,Classroom):
-            return self.id==other.id
-        elif isinstance(other,int):
-            return self.id==other
+    """
+    Represents a classroom with a course, teacher, and list of students.
+    """
+    id: int = 0
+    name: str = ""
+    course: Course = None
+    teacher: Teacher = None
+    students: list[Student] = []
+    def __init__(self, id, name):
+        """
+        Initialize a Classroom object.
+
+        Args:
+            id (int): The unique ID of the classroom.
+            name (str): The name of the classroom.
+        """
+        self.id = id
+        self.name = name
+        self.students = []
+    def __eq__(self, other):
+        """
+        Compare the classroom with another Classroom object or an integer ID.
+
+        Args:
+            other (Classroom or int): The object or classroom ID to compare with.
+
+        Returns:
+            bool: True if the classroom IDs are equal, otherwise False.
+        """
+        if isinstance(other, Classroom):
+            return self.id == other.id
+        elif isinstance(other, int):
+            return self.id == other
     def __str__(self):
+        """
+        Return a formatted string containing the classroom information.
+
+        Returns:
+            str: The classroom ID and name.
+        """
         return f"{self.id}\t{self.name}"
     def print_info(self):
-        print("Id:",self.id)
-        print("Name:",self.name)
-        print("Courses:",self.course.id)
-        print("Teachers:",self.teacher)
+        """
+        Print the classroom's information, course, teacher, and students.
+        """
+        print("Id:", self.id)
+        print("Name:", self.name)
+        print("Courses:", self.course.id)
+        print("Teachers:", self.teacher)
         print("Students:")
-        print("Id\tName\tFamily") 
+        print("Id\tName\tFamily")
         for s in self.students:
             print(s)
 class School:
-    id:int=0
-    name:str=""
-    selected_classroom:Classroom=None
-    selected_student:Student=None
-    courses:list[Course]=[]
-    students:list[Student]=[]
-    teachers:list[Teacher]=[]
-    classrooms:list[Classroom]=[]
-    def __init__(self,id,name):
-        self.id=id
-        self.name=name
-        self.courses=[]
-        self.students=[]
-        self.teachers=[]
-        self.classrooms=[]
-    def add_classroom(self,id,name,course_id,teacher_id,student_id):
+    """
+    Represents a school with students, teachers, courses, and classrooms.
+    """
+    id: int = 0
+    name: str = ""
+    selected_classroom: Classroom = None
+    selected_student: Student = None
+    courses: list[Course] = []
+    students: list[Student] = []
+    teachers: list[Teacher] = []
+    classrooms: list[Classroom] = []
+    def __init__(self, id, name):
+        """
+        Initialize a School object.
+
+        Args:
+            id (int): The unique ID of the school.
+            name (str): The name of the school.
+        """
+        self.id = id
+        self.name = name
+        self.courses = []
+        self.students = []
+        self.teachers = []
+        self.classrooms = []
+    def add_classroom(self, id, name, course_id, teacher_id, student_id):
+        """
+        Add a new classroom to the school.
+
+        Args:
+            id (int): The unique ID of the classroom.
+            name (str): The name of the classroom.
+            course_id (int): The ID of the course assigned to the classroom.
+            teacher_id (int): The ID of the teacher assigned to the classroom.
+            student_id (int): The ID of the student assigned to the classroom.
+        """
         if id in self.classrooms:
             print("This Id Exists")
             return
@@ -122,170 +255,342 @@ class School:
         if student_id not in self.students:
             print("Student not found")
             return
-        course=self.courses[self.courses.index(course_id)]
-        teacher=self.teachers[self.teachers.index(teacher_id)]
-        student=self.students[self.students.index(student_id)]
-        new_class=Classroom(id,name)
-        new_class.course=course
-        new_class.teacher=teacher
+        course = self.courses[self.courses.index(course_id)]
+        teacher = self.teachers[self.teachers.index(teacher_id)]
+        student = self.students[self.students.index(student_id)]
+        new_class = Classroom(id, name)
+        new_class.course = course
+        new_class.teacher = teacher
         new_class.students.append(student)
         self.classrooms.append(new_class)
-    def add_student(self,id,name,family):
+    def add_student(self, id, name, family):
+        """
+        Add a new student to the school.
+
+        Args:
+            id (int): The unique ID of the student.
+            name (str): The first name of the student.
+            family (str): The family name of the student.
+        """
         if id in scl.students:
             print("This id is exsits")
         else:
-            self.students.append(Student(id,name,family))
-    def add_teacher(self,id,name,family):
+            self.students.append(Student(id, name, family))
+    def add_teacher(self, id, name, family):
+        """
+        Add a new teacher to the school.
+
+        Args:
+            id (int): The unique ID of the teacher.
+            name (str): The first name of the teacher.
+            family (str): The family name of the teacher.
+        """
         if id in scl.teachers:
             print("This id is exsits")
         else:
-            self.teachers.append(Teacher(id,name,family))
-    def add_course(self,id,name,units,score):
+            self.teachers.append(Teacher(id, name, family))
+    def add_course(self, id, name, units, score):
+        """
+        Add a new course to the school.
+
+        Args:
+            id (int): The unique ID of the course.
+            name (str): The name of the course.
+            units (int): The number of course units.
+            score (int): The score associated with the course.
+        """
         if id in scl.courses:
             print("This id is exsits")
         else:
-            self.courses.append(Course(id,name,units,score))
-    def add_course_to_selected_student(self,id):
-        if id  not in self.courses:
+            self.courses.append(Course(id, name, units, score))
+    def add_course_to_selected_student(self, id):
+        """
+        Add a course to the selected student's course list.
+
+        Args:
+            id (int): The ID of the course to add.
+        """
+        if id not in self.courses:
             print("This id doesn't exist")
         else:
             if id in self.selected_student.courses:
                 print("This id already exist")
             else:
-                scl.selected_student.courses.append(self.courses[self.courses.index(id)])
-    def add_course_to_selected_teacher(self,id):
-        if id  not in self.courses:
+                scl.selected_student.courses.append(
+                    self.courses[self.courses.index(id)]
+                )
+    def add_course_to_selected_teacher(self, id):
+        """
+        Add a course to the selected teacher's course list.
+
+        Args:
+            id (int): The ID of the course to add.
+        """
+        if id not in self.courses:
             print("This id doesn't exist")
         else:
             if id in self.selected_teachers.courses:
                 print("This id already exist")
             else:
-                self.selected_teachers.courses.append(self.courses[self.courses.index(id)])
-    def remove_student(self,id):
+                self.selected_teachers.courses.append(
+                    self.courses[self.courses.index(id)]
+                )
+    def remove_student(self, id):
+        """
+        Remove a student from the school.
+
+        Args:
+            id (int): The ID of the student to remove.
+        """
         if id not in scl.students:
             print("This id doesn't exsits")
         else:
-            self.students.remove(Student(id,"",""))
-    def remove_teacher(self,id):
+            self.students.remove(Student(id, "", ""))
+    def remove_teacher(self, id):
+        """
+        Remove a teacher from the school.
+
+        Args:
+            id (int): The ID of the teacher to remove.
+        """
         if id not in scl.teachers:
             print("This id doesn't exsits")
         else:
-            self.teachers.remove(Teacher(id,"",""))
-    def remove_course(self,id):
+            self.teachers.remove(Teacher(id, "", ""))
+    def remove_course(self, id):
+        """
+        Remove a course from the school.
+
+        Args:
+            id (int): The ID of the course to remove.
+        """
         if id not in scl.courses:
             print("This id doesn't exsits")
         else:
-            self.courses.remove(Course(id,"",0,0))
-    def remove_course_to_selected_student(self,id):
+            self.courses.remove(Course(id, "", 0, 0))
+    def remove_classroom(self, id):
+        """
+        Remove a classroom from the school.
+        Args:
+        id (int): The ID of the classroom to remove.
+        """
+        if id not in self.classrooms:
+            print("This id doesn't exsits")
+        else:
+            self.classrooms.remove(Classroom(id, ""))
+    def remove_course_to_selected_student(self, id):
+        """
+        Remove a course from the selected student's course list.
+
+        Args:
+            id (int): The ID of the course to remove.
+        """
         if id not in self.courses:
             print("This id doesn't exists")
         else:
-            self.selected_student.courses.remove(self.courses[self.courses.index(id)])
-    def remove_course_to_selected_teacher(self,id):
+            self.selected_student.courses.remove(
+                self.courses[self.courses.index(id)]
+            )
+    def remove_course_to_selected_teacher(self, id):
+        """
+        Remove a course from the selected teacher's course list.
+
+        Args:
+            id (int): The ID of the course to remove.
+        """
         if id not in self.courses:
             print("This id doesn't exists")
         else:
-            self.selected_teachers.courses.remove(self.courses[self.courses.index(id)])
-    def edit_student(self,id,name,family):
-        if id  not in scl.students:
+            self.selected_teachers.courses.remove(
+                self.courses[self.courses.index(id)]
+            )
+    def edit_student(self, id, name, family):
+        """
+        Edit an existing student's information.
+
+        Args:
+            id (int): The ID of the student to edit.
+            name (str): The new first name of the student.
+            family (str): The new family name of the student.
+        """
+        if id not in scl.students:
             print("This id doesn't exists")
         else:
-            self.students[self.students.index(Student(id,"",""))]=Student(id,name,family)
-    def edit_teacher(self,id,name,family):
-        if id  not in scl.teachers:
+            self.students[self.students.index(Student(id, "", ""))] = Student(
+                id, name, family
+            )
+    def edit_teacher(self, id, name, family):
+        """
+        Edit an existing teacher's information.
+
+        Args:
+            id (int): The ID of the teacher to edit.
+            name (str): The new first name of the teacher.
+            family (str): The new family name of the teacher.
+        """
+        if id not in scl.teachers:
             print("This id doesn't exists")
         else:
-            self.teachers[self.teachers.index(Teacher(id,"",""))]=Teacher(id,name,family)
-    def edit_course(self,id,name,units,score):
-        if id  not in scl.courses:
+            self.teachers[self.teachers.index(Teacher(id, "", ""))] = Teacher(
+                id, name, family
+            )
+    def edit_course(self, id, name, units, score):
+        """
+        Edit an existing course's information.
+
+        Args:
+            id (int): The ID of the course to edit.
+            name (str): The new name of the course.
+            units (int): The new number of course units.
+            score (int): The new score of the course.
+        """
+        if id not in scl.courses:
             print("This id doesn't exists")
         else:
-            self.courses[self.courses.index(Course(id,"",0,0))]=Course(id,name,units,score)
+            self.courses[self.courses.index(Course(id, "", 0, 0))] = Course(
+                id, name, units, score
+            )
     def print_student(self):
-        if len(self.students)==0:
+        """
+        Print a list of all students in the school.
+        """
+        if len(self.students) == 0:
             print("No Student Added")
         else:
-            print("Id\tName\tFamily") 
+            print("Id\tName\tFamily")
             for t in scl.students:
                 print(t)
     def print_teacher(self):
-        if len(self.teachers)==0:
+        """
+        Print a list of all teachers in the school.
+        """
+        if len(self.teachers) == 0:
             print("No Teacher Added")
         else:
-            print("Id\tName\tFamily") 
+            print("Id\tName\tFamily")
             for s in scl.teachers:
                 print(s)
     def print_course(self):
-        if len(self.courses)==0:
+        """
+        Print a list of all courses in the school.
+        """
+        if len(self.courses) == 0:
             print("No Courses Added")
         else:
-            print("Id\tName\tUnits\tScore") 
+            print("Id\tName\tUnits\tScore")
             for c in scl.courses:
                 print(c)
     def print_classrooms(self):
-        if len(self.classrooms)==0:
+        """
+        Print a list of all classrooms in the school.
+        """
+        if len(self.classrooms) == 0:
             print("No Classroom Added")
         else:
             print("Id\tname")
             for c in scl.classrooms:
                 print(c)
-    def select_student(self,id):
+    def select_student(self, id):
+        """
+        Select a student by their ID.
+
+        Args:
+            id (int): The ID of the student to select.
+        """
         if id not in self.students:
             print("Error")
         else:
-            self.selected_student=self.students[self.students.index(Student(id,"",""))]
-    def select_teacher(self,id):
-            if id not in self.teachers:
-                print("Error")
-            else:
-                self.selected_teachers=self.teachers[self.teachers.index(Teacher(id,"",""))]
-    def select_classroom(self,id):
-        if id  not in scl.classrooms:
-            print("This id doesn't exists") 
-        scl.selected_classroom=scl.classrooms[scl.classrooms.index(Classroom(id,""))]
+            self.selected_student = self.students[
+                self.students.index(Student(id, "", ""))
+            ]
+    def select_teacher(self, id):
+        """
+        Select a teacher by their ID.
+
+        Args:
+            id (int): The ID of the teacher to select.
+        """
+        if id not in self.teachers:
+            print("Error")
+        else:
+            self.selected_teachers = self.teachers[
+                self.teachers.index(Teacher(id, "", ""))
+            ]
+    def select_classroom(self, id):
+        """
+        Select a classroom by its ID.
+
+        Args:
+            id (int): The ID of the classroom to select.
+        """
+        if id not in scl.classrooms:
+            print("This id doesn't exists")
+        scl.selected_classroom = scl.classrooms[
+            scl.classrooms.index(Classroom(id, ""))
+        ]
     def load_data(self):
-        f1=open("data.json","rt")
-        s=f1.read( )
-        f1.close( )
-        reads=json.loads(s)
+        """
+        Load school data from the data.json file.
+
+        Reads courses, students, teachers, and classrooms from
+        the JSON file and adds them to the school's data.
+        """
+        f1 = open("data.json", "rt")
+        s = f1.read()
+        f1.close()
+        reads = json.loads(s)
         for item in reads["courses"]:
-            self.courses.append(Course(item["id"],item["name"],item["units"],""))     
+            self.courses.append(
+                Course(item["id"], item["name"], item["units"], "")
+            )
         for item in reads["students"]:
-            t = Student(item["id"],item["name"],item["family"])
+            t = Student(item["id"], item["name"], item["family"])
             for course_id in item["courses"]:
                 if course_id[0] in self.courses:
-                    y=self.courses[self.courses.index(course_id[0])]
-                    y.score=course_id[1]
-                    k=copy.deepcopy(y)
+                    y = self.courses[self.courses.index(course_id[0])]
+                    y.score = course_id[1]
+                    k = copy.deepcopy(y)
                     t.courses.append(k)
             self.students.append(t)
         for item in reads["teachers"]:
-            t = Teacher(item["id"],item["name"],item["family"])
+            t = Teacher(item["id"], item["name"], item["family"])
             for course_id in item["courses"]:
                 if course_id in self.courses:
-                    y=self.courses[self.courses.index(course_id)]
+                    y = self.courses[self.courses.index(course_id)]
                     t.courses.append(y)
             self.teachers.append(t)
         for item in reads["classrooms"]:
-            t = Classroom(item["id"],item["name"])
+            t = Classroom(item["id"], item["name"])
             if item["course"] in self.courses:
-                t.course = self.courses[self.courses.index(item["course"])]
+                t.course = self.courses[
+                    self.courses.index(item["course"])
+                ]
             if item["teacher"] is None:
                 t.teacher = None
             elif item["teacher"] in self.teachers:
-                t.teacher = self.teachers[self.teachers.index(item["teacher"])]
+                t.teacher = self.teachers[
+                    self.teachers.index(item["teacher"])
+                ]
             for student in item["students"]:
-                t.students.append(self.students[self.students.index(student)])
-            self.classrooms.append(t)                             
+                t.students.append(
+                    self.students[self.students.index(student)]
+                )
+            self.classrooms.append(t)
     def save_data(self):
+        """
+        Save the school's data to the data.json file.
+
+        Collects information about students, teachers, courses,
+        and classrooms and stores it in JSON format.
+        """
         result = {}
         result["students"] = []
         for student in self.students:
             result["students"].append({
-                "id" : student.id,
-                "name" : student.name,
-                "family" : student.family,
-                "courses" : [[c.id,c.score] for c in student.courses]
+                "id": student.id,
+                "name": student.name,
+                "family": student.family,
+                "courses": [[c.id, c.score] for c in student.courses]
             })
         result["teachers"] = []
         for teacher in self.teachers:
@@ -293,7 +598,7 @@ class School:
                 "id": teacher.id,
                 "name": teacher.name,
                 "family": teacher.family,
-                "courses" : [c.id for c in teacher.courses]
+                "courses": [c.id for c in teacher.courses]
             })
         result["courses"] = []
         for course in self.courses:
@@ -302,14 +607,14 @@ class School:
                 "name": course.name,
                 "units": course.units
             })
-        result["classrooms"] =[]
+        result["classrooms"] = []
         for c in self.classrooms:
             result["classrooms"].append({
-                "id" :c.id,
-                "name" : c.name,
-                "course" : c.course.id,
-                "teacher" : None if c.teacher is None else c.teacher.id,
-                "students" : [s.id for s in c.students]
+                "id": c.id,
+                "name": c.name,
+                "course": c.course.id,
+                "teacher": None if c.teacher is None else c.teacher.id,
+                "students": [s.id for s in c.students]
             })
         with open("data.json", "w") as f:
             json.dump(result, f)
@@ -506,10 +811,7 @@ while True:
         elif cmd==4:
             scl.print_classrooms( )
             id=int(input("Id:"))
-            if id not in scl.classrooms:
-                print("This id doesn't exsits")
-            else:
-                scl.classrooms.remove(Classroom(id,""))
+            scl.remove_classroom(id)
         elif cmd==5:
             scl.print_classrooms( )
             id=int(input("id:"))
