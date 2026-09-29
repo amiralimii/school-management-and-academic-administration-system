@@ -245,16 +245,16 @@ class School:
             student_id (int): The ID of the student assigned to the classroom.
         """
         if id in self.classrooms:
-            print("This Id Exists")
+            print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
             return
         if course_id not in self.courses:
-            print("Course not found")
+            print(Fore.RED + "This Course Not Found" + Style.RESET_ALL)
             return
         if teacher_id not in self.teachers:
-            print("Teacher not found")
+            print(Fore.RED + "This Teacher Not Found" + Style.RESET_ALL)
             return
         if student_id not in self.students:
-            print("Student not found")
+            print(Fore.RED + "This Student Not Found" + Style.RESET_ALL)
             return
         course = self.courses[self.courses.index(course_id)]
         teacher = self.teachers[self.teachers.index(teacher_id)]
