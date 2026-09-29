@@ -649,7 +649,7 @@ while True:
         print(Fore.YELLOW + "3. Edit Students" + Style.RESET_ALL)
         print(Fore.YELLOW + "4. Delete Students" + Style.RESET_ALL)
         print(Fore.YELLOW + "5. Select Students" + Style.RESET_ALL)
-        print(Fore.YELLOW + "0. Back" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.print_student( )
@@ -677,11 +677,11 @@ while True:
         elif cmd==0:
             level="root"
     elif level=="select students":
-        print("1.info")
-        print("2.add courses")
-        print("3.delete courses")
-        print("4.set scorses")
-        print("0.back")
+        print(Fore.YELLOW + "1. Show Info" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Courses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Delete Courses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Set Scores" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.selected_student.print_info()
@@ -702,12 +702,12 @@ while True:
         elif cmd==0:
             level="students"
     elif level=="teachers":
-        print("1.show teachers")
-        print("2.add teachers")
-        print("3.edit teachers")
-        print("4.delete teachers")
-        print("5.select teachers")
-        print("0.back")
+        print(Fore.YELLOW + "1. Show Teachers" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Teachers" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Edit Teachers" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Delete Teachers" + Style.RESET_ALL)
+        print(Fore.YELLOW + "5. Select Teachers" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.print_teacher( )
@@ -735,10 +735,10 @@ while True:
         elif cmd==0:
             level="root"
     elif level=="select teachers":
-        print("1.info")
-        print("2.add courses")
-        print("3.delete courses")
-        print("0.back")
+        print(Fore.YELLOW + "1. Info" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Courses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Delete Coursess" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.selected_teachers.print_info()
@@ -755,11 +755,11 @@ while True:
         elif cmd==0:
             level="teachers"
     elif level=="courses":
-        print("1.show courses")
-        print("2.add courses")
-        print("3.edit courses")
-        print("4.delete courses")
-        print("0.back")
+        print(Fore.YELLOW + "1. Show Courses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Courses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Edit Scores" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Delete Courses" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.print_course( )
@@ -784,12 +784,12 @@ while True:
         elif cmd==0:
             level="root"
     elif level=="classrooms":
-        print("1.show classrooms")
-        print("2.add classrooms")
-        print("3.edit classrooms")
-        print("4.delete classrooms")
-        print("5.select classrooms")
-        print("0.back")
+        print(Fore.YELLOW + "1. Show Classrooms" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Classrooms" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Edit Classrooms" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Delete Classrooms" + Style.RESET_ALL)
+        print(Fore.YELLOW + "5. Select Classrooms" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.print_classrooms()
@@ -830,13 +830,13 @@ while True:
         elif cmd==0:
             level="root"
     elif level=="select classrooms":
-        print("1.info")
-        print("2.add student")
-        print("3.delete student")
-        print("4.change course")
-        print("5.change teacher")
-        print("6.close classroom")
-        print("0.back")
+        print(Fore.YELLOW + "1. Info" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Student" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Delete Student" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Change Courses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "5. Change Teacher" + Style.RESET_ALL)
+        print(Fore.YELLOW + "6. Close Classroom" + Style.RESET_ALL)
+        print(Fore.RED + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.selected_classroom.print_info()
