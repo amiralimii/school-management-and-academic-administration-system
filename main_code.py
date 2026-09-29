@@ -1,5 +1,6 @@
 import copy
 import json
+from colorama import Fore, Back, Style
 class Course:
     """
     Represents a course with its ID, name, units, and score.
@@ -273,7 +274,7 @@ class School:
             family (str): The family name of the student.
         """
         if id in scl.students:
-            print("This id is exsits")
+            print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
         else:
             self.students.append(Student(id, name, family))
     def add_teacher(self, id, name, family):
@@ -286,7 +287,7 @@ class School:
             family (str): The family name of the teacher.
         """
         if id in scl.teachers:
-            print("This id is exsits")
+            print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
         else:
             self.teachers.append(Teacher(id, name, family))
     def add_course(self, id, name, units, score):
@@ -300,7 +301,7 @@ class School:
             score (int): The score associated with the course.
         """
         if id in scl.courses:
-            print("This id is exsits")
+            print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
         else:
             self.courses.append(Course(id, name, units, score))
     def add_course_to_selected_student(self, id):
@@ -311,10 +312,10 @@ class School:
             id (int): The ID of the course to add.
         """
         if id not in self.courses:
-            print("This id doesn't exist")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             if id in self.selected_student.courses:
-                print("This id already exist")
+                print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
             else:
                 scl.selected_student.courses.append(
                     self.courses[self.courses.index(id)]
@@ -327,10 +328,10 @@ class School:
             id (int): The ID of the course to add.
         """
         if id not in self.courses:
-            print("This id doesn't exist")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             if id in self.selected_teachers.courses:
-                print("This id already exist")
+                print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
             else:
                 self.selected_teachers.courses.append(
                     self.courses[self.courses.index(id)]
@@ -343,7 +344,7 @@ class School:
             id (int): The ID of the student to remove.
         """
         if id not in scl.students:
-            print("This id doesn't exsits")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.students.remove(Student(id, "", ""))
     def remove_teacher(self, id):
@@ -354,7 +355,7 @@ class School:
             id (int): The ID of the teacher to remove.
         """
         if id not in scl.teachers:
-            print("This id doesn't exsits")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.teachers.remove(Teacher(id, "", ""))
     def remove_course(self, id):
@@ -365,7 +366,7 @@ class School:
             id (int): The ID of the course to remove.
         """
         if id not in scl.courses:
-            print("This id doesn't exsits")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.courses.remove(Course(id, "", 0, 0))
     def remove_classroom(self, id):
@@ -375,7 +376,7 @@ class School:
         id (int): The ID of the classroom to remove.
         """
         if id not in self.classrooms:
-            print("This id doesn't exsits")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.classrooms.remove(Classroom(id, ""))
     def remove_course_to_selected_student(self, id):
@@ -386,7 +387,7 @@ class School:
             id (int): The ID of the course to remove.
         """
         if id not in self.courses:
-            print("This id doesn't exists")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.selected_student.courses.remove(
                 self.courses[self.courses.index(id)]
@@ -399,7 +400,7 @@ class School:
             id (int): The ID of the course to remove.
         """
         if id not in self.courses:
-            print("This id doesn't exists")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.selected_teachers.courses.remove(
                 self.courses[self.courses.index(id)]
@@ -414,7 +415,7 @@ class School:
             family (str): The new family name of the student.
         """
         if id not in scl.students:
-            print("This id doesn't exists")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.students[self.students.index(Student(id, "", ""))] = Student(
                 id, name, family
@@ -429,7 +430,7 @@ class School:
             family (str): The new family name of the teacher.
         """
         if id not in scl.teachers:
-            print("This id doesn't exists")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.teachers[self.teachers.index(Teacher(id, "", ""))] = Teacher(
                 id, name, family
@@ -445,7 +446,7 @@ class School:
             score (int): The new score of the course.
         """
         if id not in scl.courses:
-            print("This id doesn't exists")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.courses[self.courses.index(Course(id, "", 0, 0))] = Course(
                 id, name, units, score
@@ -455,7 +456,7 @@ class School:
         Print a list of all students in the school.
         """
         if len(self.students) == 0:
-            print("No Student Added")
+            print(Fore.RED + "No Student Added" + Style.RESET_ALL)
         else:
             print("Id\tName\tFamily")
             for t in scl.students:
@@ -465,7 +466,7 @@ class School:
         Print a list of all teachers in the school.
         """
         if len(self.teachers) == 0:
-            print("No Teacher Added")
+            print(Fore.RED + "No Teacher Added" + Style.RESET_ALL)
         else:
             print("Id\tName\tFamily")
             for s in scl.teachers:
@@ -475,7 +476,7 @@ class School:
         Print a list of all courses in the school.
         """
         if len(self.courses) == 0:
-            print("No Courses Added")
+            print(Fore.RED + "No Course Added" + Style.RESET_ALL)
         else:
             print("Id\tName\tUnits\tScore")
             for c in scl.courses:
@@ -485,7 +486,7 @@ class School:
         Print a list of all classrooms in the school.
         """
         if len(self.classrooms) == 0:
-            print("No Classroom Added")
+            print(Fore.RED + "No Classrooms Added" + Style.RESET_ALL)
         else:
             print("Id\tname")
             for c in scl.classrooms:
@@ -498,7 +499,7 @@ class School:
             id (int): The ID of the student to select.
         """
         if id not in self.students:
-            print("Error")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.selected_student = self.students[
                 self.students.index(Student(id, "", ""))
@@ -511,7 +512,7 @@ class School:
             id (int): The ID of the teacher to select.
         """
         if id not in self.teachers:
-            print("Error")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.selected_teachers = self.teachers[
                 self.teachers.index(Teacher(id, "", ""))
@@ -524,7 +525,7 @@ class School:
             id (int): The ID of the classroom to select.
         """
         if id not in scl.classrooms:
-            print("This id doesn't exists")
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         scl.selected_classroom = scl.classrooms[
             scl.classrooms.index(Classroom(id, ""))
         ]
@@ -628,7 +629,7 @@ while True:
         print("3.courses")
         print("4.classrooms")
         print("5.save")
-        print("0.exit")
+        print(Fore.RED + "1.exit" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             level="students"
@@ -643,26 +644,29 @@ while True:
         elif cmd==0:
             break
     elif level=="students":
-        print("1.show students")
-        print("2.add students")
-        print("3.edit students")
-        print("4.delete students")
-        print("5.select students")
-        print("0.back")
+        print(Fore.YELLOW + "1. Show Students" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. Add Students" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. Edit Students" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. Delete Students" + Style.RESET_ALL)
+        print(Fore.YELLOW + "5. Select Students" + Style.RESET_ALL)
+        print(Fore.YELLOW + "0. Back" + Style.RESET_ALL)
         cmd=int(input(">>:"))
         if cmd==1:
             scl.print_student( )
         elif cmd==2:
+            scl.print_student( )
             i=int(input("Id:"))
             n=input("Name:")
             f=input("Family:")
             scl.add_student(i,n,f)
         elif cmd==3:
+            scl.print_student( )
             i=int(input("Id:"))
             n=input("Name:")
             f=input("Family:")
             scl.edit_student(i,n,f)
         elif cmd==4:
+            scl.print_student( )
             id=int(input("id:"))
             scl.remove_student(id)
         elif cmd==5:
@@ -708,16 +712,19 @@ while True:
         if cmd==1:
             scl.print_teacher( )
         elif cmd==2:
+            scl.print_teacher( )
             i=int(input("Id:"))
             n=input("Name:")
             f=input("Family:")
             scl.add_teacher(i,n,f)
         elif cmd==3:
+            scl.print_teacher( )
             i=int(input("Id:"))
             n=input("Name:")
             f=input("Family:")
             scl.edit_teacher(i,n,f)
         elif cmd==4:
+            scl.print_teacher( )
             id=int(input("Id:"))
             scl.remove_teacher(id)
         elif cmd==5:
@@ -757,18 +764,21 @@ while True:
         if cmd==1:
             scl.print_course( )
         elif cmd==2:
+            scl.print_course( )
             i=int(input("Id:"))
             n=input("Name:")
             u=input("Units:")
             s=input("Score:")
             scl.add_course(i,n,u,s)
         elif cmd==3:
+            scl.print_course( )
             i=int(input("Id:"))
             n=input("Name:")
             u=input("Units:")
             s=input("Score:")
             scl.edit_course(i,n,u,s)
         elif cmd==4:
+            scl.print_course( )
             id=int(input("Id:"))
             scl.remove_course(id)
         elif cmd==0:
@@ -804,7 +814,7 @@ while True:
             scl.print_classrooms( )
             id=int(input("Id:"))
             if id  not in scl.classrooms:
-                print("This id doesn't exists")
+                print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
             else:
                 name=input("name:")
                 scl.classrooms[scl.classrooms.index(Classroom(id,""))]=Classroom(id,name)
@@ -840,17 +850,17 @@ while True:
                                 failed_students.append(s)
                                 break
                 if len(scl.selected_classroom.students)==3:
-                    print("Theren Is No Student")
+                    print(Fore.RED + "There Is No Student" + Style.RESET_ALL)
                     break
             for s in failed_students:
                 print(s)
             student_id=int(input("id:"))
             if student_id not in scl.students:
-                print("This student doesn't exist")
+                print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
             else:
                 student=scl.students[scl.students.index(Student(student_id,"",""))]
                 if student in scl.selected_classroom.students:
-                    print("This student already exists")
+                    print(Fore.RED + "This Student  Exsits" + Style.RESET_ALL)
                 else:
                     scl.selected_classroom.students.append(student)
         elif cmd==3:
@@ -858,7 +868,7 @@ while True:
                 print(s)
             student_id=int(input("id:"))
             if student_id not in scl.selected_classroom.students:
-                print("This student doesn't exist in this classroom")
+                print(Fore.RED + "This Student's Doesn't Exsits In This Classroom" + Style.RESET_ALL)
             else:
                 scl.selected_classroom.students.remove(Student(student_id,"",""))
         elif cmd==4:
@@ -866,7 +876,7 @@ while True:
                 print(c)
             course_id=int(input("course_id:"))
             if course_id not in scl.courses: 
-                print("This id doesn't exists")
+                print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
             else:
                 scl.selected_classroom.course=scl.courses[scl.courses.index(course_id)]
                 if scl.selected_classroom.teacher is not None:
