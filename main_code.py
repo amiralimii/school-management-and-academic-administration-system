@@ -324,6 +324,7 @@ class School:
                 scl.selected_student.courses.append(
                     self.courses[self.courses.index(id)]
                 )
+                print(Fore.GREEN + "Course Added Successfully" + Style.RESET_ALL)
     def add_course_to_selected_teacher(self, id):
         """
         Add a course to the selected teacher's course list.
@@ -340,6 +341,7 @@ class School:
                 self.selected_teachers.courses.append(
                     self.courses[self.courses.index(id)]
                 )
+                print(Fore.GREEN + "Course Added Successfully" + Style.RESET_ALL)
     def remove_student(self, id):
         """
         Remove a student from the school.
@@ -548,10 +550,11 @@ class School:
         """
         if id not in scl.classrooms:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
-        scl.selected_classroom = scl.classrooms[
-            scl.classrooms.index(Classroom(id, ""))
+        else:
+            scl.selected_classroom = scl.classrooms[
+                scl.classrooms.index(Classroom(id, ""))
+            ]
             print(Fore.GREEN + "Classroom Selected Successfully" + Style.RESET_ALL)
-        ]
     def load_data(self):
         """
         Load school data from the data.json file.
