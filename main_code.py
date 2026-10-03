@@ -642,6 +642,7 @@ class School:
             })
         with open("data.json", "w") as f:
             json.dump(result, f)
+        print(Fore.GREEN + "Data Saved Successfully" + Style.RESET_ALL)
 level="root"
 scl=School(10,"sama")
 scl.load_data( )
