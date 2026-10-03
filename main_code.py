@@ -277,6 +277,7 @@ class School:
             print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
         else:
             self.students.append(Student(id, name, family))
+            print(Fore.GREEN + "Student Added Successfully" + Style.RESET_ALL)
     def add_teacher(self, id, name, family):
         """
         Add a new teacher to the school.
@@ -290,6 +291,7 @@ class School:
             print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
         else:
             self.teachers.append(Teacher(id, name, family))
+            print(Fore.GREEN + "Teacher Added Successfully" + Style.RESET_ALL)
     def add_course(self, id, name, units, score):
         """
         Add a new course to the school.
@@ -304,6 +306,7 @@ class School:
             print(Fore.RED + "This Id Alredy Exsits" + Style.RESET_ALL)
         else:
             self.courses.append(Course(id, name, units, score))
+            print(Fore.GREEN + "Course Added Successfully" + Style.RESET_ALL)
     def add_course_to_selected_student(self, id):
         """
         Add a course to the selected student's course list.
@@ -347,6 +350,7 @@ class School:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.students.remove(Student(id, "", ""))
+            print(Fore.GREEN + "Student Deleted Successfully" + Style.RESET_ALL)
     def remove_teacher(self, id):
         """
         Remove a teacher from the school.
@@ -358,6 +362,7 @@ class School:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.teachers.remove(Teacher(id, "", ""))
+            print(Fore.GREEN + "Teacher Deleted Successfully" + Style.RESET_ALL)
     def remove_course(self, id):
         """
         Remove a course from the school.
@@ -369,6 +374,7 @@ class School:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.courses.remove(Course(id, "", 0, 0))
+            print(Fore.GREEN + "Course Deleted Successfully" + Style.RESET_ALL)
     def remove_classroom(self, id):
         """
         Remove a classroom from the school.
@@ -422,6 +428,7 @@ class School:
             self.students[self.students.index(Student(id, "", ""))] = Student(
                 id, name, family
             )
+            print(Fore.GREEN + "Student Updated Successfully" + Style.RESET_ALL)
     def edit_teacher(self, id, name, family):
         """
         Edit an existing teacher's information.
@@ -437,6 +444,7 @@ class School:
             self.teachers[self.teachers.index(Teacher(id, "", ""))] = Teacher(
                 id, name, family
             )
+            print(Fore.GREEN + "Teacher Updated Successfully" + Style.RESET_ALL)
     def edit_course(self, id, name, units, score):
         """
         Edit an existing course's information.
@@ -453,6 +461,7 @@ class School:
             self.courses[self.courses.index(Course(id, "", 0, 0))] = Course(
                 id, name, units, score
             )
+            print(Fore.GREEN + "Course Updated Successfully" + Style.RESET_ALL)
     def print_student(self):
         """
         Print a list of all students in the school.
