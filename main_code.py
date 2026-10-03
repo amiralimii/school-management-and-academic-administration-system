@@ -386,12 +386,13 @@ class School:
         Args:
             id (int): The ID of the course to remove.
         """
-        if id not in self.courses:
+        if id not in  self.selected_student.courses:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.selected_student.courses.remove(
                 self.courses[self.courses.index(id)]
             )
+            print(Fore.GREEN + "Course Deleted Successfully" + Style.RESET_ALL)
     def remove_course_to_selected_teacher(self, id):
         """
         Remove a course from the selected teacher's course list.
@@ -399,12 +400,13 @@ class School:
         Args:
             id (int): The ID of the course to remove.
         """
-        if id not in self.courses:
+        if id not in self.selected_teachers.courses:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.selected_teachers.courses.remove(
                 self.courses[self.courses.index(id)]
             )
+            print(Fore.GREEN + "Course Deleted Successfully" + Style.RESET_ALL)
     def edit_student(self, id, name, family):
         """
         Edit an existing student's information.
