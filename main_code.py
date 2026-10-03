@@ -891,6 +891,7 @@ while True:
                     print(Fore.RED + "This Student  Exsits" + Style.RESET_ALL)
                 else:
                     scl.selected_classroom.students.append(student)
+                    print(Fore.GREEN + "Student Added Successfully" + Style.RESET_ALL)
         elif cmd==3:
             for s in scl.selected_classroom.students:
                 print(s)
@@ -899,6 +900,7 @@ while True:
                 print(Fore.RED + "This Student's Doesn't Exsits In This Classroom" + Style.RESET_ALL)
             else:
                 scl.selected_classroom.students.remove(Student(student_id,"",""))
+                print(Fore.GREEN + "Student Deleted Successfully" + Style.RESET_ALL)
         elif cmd==4:
             for c in scl.courses:    
                 print(c)
