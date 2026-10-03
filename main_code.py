@@ -841,11 +841,6 @@ while True:
             scl.print_classrooms( )
             id=int(input("Id:"))
             scl.edit_classrooms(id)
-            #if id  not in scl.classrooms:
-                #print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
-            #else:
-                #name=input("name:")
-                #scl.classrooms[scl.classrooms.index(Classroom(id,""))]=Classroom(id,name)
         elif cmd==4:
             scl.print_classrooms( )
             id=int(input("Id:"))
