@@ -524,6 +524,7 @@ class School:
             self.selected_student = self.students[
                 self.students.index(Student(id, "", ""))
             ]
+            print(Fore.GREEN + "Student Selected Successfully" + Style.RESET_ALL)
     def select_teacher(self, id):
         """
         Select a teacher by their ID.
