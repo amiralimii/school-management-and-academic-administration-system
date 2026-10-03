@@ -550,6 +550,7 @@ class School:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         scl.selected_classroom = scl.classrooms[
             scl.classrooms.index(Classroom(id, ""))
+            print(Fore.GREEN + "Classroom Selected Successfully" + Style.RESET_ALL)
         ]
     def load_data(self):
         """
