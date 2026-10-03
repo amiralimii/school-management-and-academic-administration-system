@@ -386,6 +386,7 @@ class School:
             print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
         else:
             self.classrooms.remove(Classroom(id, ""))
+            print(Fore.GREEN + "Classroom Deleted Successfully" + Style.RESET_ALL)
     def remove_course_to_selected_student(self, id):
         """
         Remove a course from the selected student's course list.
