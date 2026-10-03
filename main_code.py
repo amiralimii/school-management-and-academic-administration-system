@@ -464,6 +464,13 @@ class School:
                 id, name, units, score
             )
             print(Fore.GREEN + "Course Updated Successfully" + Style.RESET_ALL)
+    def edit_classrooms(self , id):
+        if id  not in self.classrooms:
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
+        else:
+            name=input("name:")
+            self.classrooms[self.classrooms.index(Classroom(id,""))]=Classroom(id,name)
+            print(Fore.GREEN + "Classroom Updated Successfully" + Style.RESET_ALL)
     def print_student(self):
         """
         Print a list of all students in the school.
@@ -826,11 +833,12 @@ while True:
         elif cmd==3:
             scl.print_classrooms( )
             id=int(input("Id:"))
-            if id  not in scl.classrooms:
-                print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
-            else:
-                name=input("name:")
-                scl.classrooms[scl.classrooms.index(Classroom(id,""))]=Classroom(id,name)
+            scl.edit_classrooms(id)
+            #if id  not in scl.classrooms:
+                #print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
+            #else:
+                #name=input("name:")
+                #scl.classrooms[scl.classrooms.index(Classroom(id,""))]=Classroom(id,name)
         elif cmd==4:
             scl.print_classrooms( )
             id=int(input("Id:"))
