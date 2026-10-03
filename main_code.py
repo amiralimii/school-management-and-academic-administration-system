@@ -264,6 +264,7 @@ class School:
         new_class.teacher = teacher
         new_class.students.append(student)
         self.classrooms.append(new_class)
+        print(Fore.GREEN + "Classroom Added Successfully" + Style.RESET_ALL)
     def add_student(self, id, name, family):
         """
         Add a new student to the school.
