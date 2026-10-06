@@ -561,6 +561,17 @@ class School:
                 scl.classrooms.index(Classroom(id, ""))
             ]
             print(Fore.GREEN + "Classroom Selected Successfully" + Style.RESET_ALL)
+    def change_course_from_classroom(self , course_id):
+        if course_id not in self.courses:
+            print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
+        else:
+            self.selected_classroom.course = self.courses[
+                self.courses.index(course_id)
+            ]
+            if self.selected_classroom.teacher is not None:
+                if course_id not in self.selected_classroom.teacher.courses:
+                    self.selected_classroom.teacher = None
+            print(Fore.GREEN + "Course Changed Successfully" + Style.RESET_ALL)
     def load_data(self):
         """
         Load school data from the data.json file.
@@ -902,19 +913,19 @@ while True:
             for c in scl.courses:    
                 print(c)
             course_id=int(input("course_id:"))
-            if course_id not in scl.courses: 
-                print(Fore.RED + "This Id Doesn't Exsits" + Style.RESET_ALL)
-            else:
-                scl.selected_classroom.course=scl.courses[scl.courses.index(course_id)]
-                if scl.selected_classroom.teacher is not None:
-                    if course_id not in scl.selected_classroom.teacher.courses:
-                        scl.selected_classroom.teacher = None
+            scl.change_course_from_classroom(course_id)
         elif cmd==5:
-            for t in scl.teachers:    
-                if t.id!=scl.selected_classroom.teacher.id:
-                    print(t) 
-            teacher_id=int(input("id:"))
-            scl.selected_classroom.teacher=scl.teachers[scl.teachers.index(Teacher(teacher_id,"",""))]
+           for t in scl.teachers:
+                if scl.selected_classroom.teacher is None or t.id != scl.selected_classroom.teacher.id:
+                    print(t)
+                teacher_id=int(input("id:"))
+                if teacher_id not in scl.teachers:
+                    print(Fore.RED + "This Teacher Doesn't Exist" + Style.RESET_ALL)
+                else:
+                    scl.selected_classroom.teacher = scl.teachers[
+                        scl.teachers.index(Teacher(teacher_id, "", ""))
+                    ]
+                    print(Fore.GREEN + "Teacher Changed Successfully" + Style.RESET_ALL)
         elif cmd==6:
             pass
         elif cmd==0:
