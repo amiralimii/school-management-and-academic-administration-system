@@ -417,6 +417,12 @@ class School:
                 self.courses[self.courses.index(id)]
             )
             print(Fore.GREEN + "Course Deleted Successfully" + Style.RESET_ALL)
+    def remove_student_from_classroom(self , id):
+        if student_id not in scl.selected_classroom.students:
+            print(Fore.RED + "This Student's Doesn't Exsits In This Classroom" + Style.RESET_ALL)
+        else:
+            scl.selected_classroom.students.remove(Student(student_id,"",""))
+            print(Fore.GREEN + "Student Deleted Successfully" + Style.RESET_ALL)
     def edit_student(self, id, name, family):
         """
         Edit an existing student's information.
@@ -891,11 +897,7 @@ while True:
             for s in scl.selected_classroom.students:
                 print(s)
             student_id=int(input("id:"))
-            if student_id not in scl.selected_classroom.students:
-                print(Fore.RED + "This Student's Doesn't Exsits In This Classroom" + Style.RESET_ALL)
-            else:
-                scl.selected_classroom.students.remove(Student(student_id,"",""))
-                print(Fore.GREEN + "Student Deleted Successfully" + Style.RESET_ALL)
+            scl.remove_student_from_classroom(id)
         elif cmd==4:
             for c in scl.courses:    
                 print(c)
